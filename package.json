@@ -2,10 +2,10 @@
   "name": "mong_db",
   "version": "1.0.0",
   "description": "my first db_program",
-  "main": "index.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "author": "code with love",
   "license": "ISC",
