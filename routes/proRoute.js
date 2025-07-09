@@ -11,8 +11,7 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname); // Rename the file to include the timestamp
     },
-}); 
-
+});
 // Initialize Multer with the storage configuration
 const upload = multer({ storage: storage });
 
