@@ -11,7 +11,6 @@ const catSchema = new mongoose.Schema({
         requrired: true
     }
 });
-
 export default mongoose.model("categories", catSchema);
 
 

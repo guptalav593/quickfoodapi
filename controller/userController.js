@@ -1,6 +1,8 @@
 import User from "../model/userModel.js";
 import jwt from 'jsonwebtoken';
+import Wallet from "../model/walletModel.js"; // Assuming this is the correct path for the wallet model
 
+// Assuming this is the correct path for the wallet controller  
 export const create = async (req, res) =>{
 
     try {
@@ -19,7 +21,7 @@ export const create = async (req, res) =>{
         {
             const savedUser = await userData.save();
              console.log("user is saved",savedUser);
-           res.status(200).json(savedUser);
+           res.status(200).json({name});
         }
         
     } 
@@ -27,7 +29,7 @@ export const create = async (req, res) =>{
         res.status(500).json({error: "Internal server error"});
     }
 
-}
+};
 
 export const fetch = async (req, res) => {
           try{
@@ -82,3 +84,50 @@ export const login = async (req, res) => {
           }
     
 };
+
+
+export const addtowallet = async (req, res) =>{
+
+    try {
+
+        const userData = new Wallet(req.body);
+            const savedUser = await userData.save();
+             console.log("Wallet is updated",savedUser);
+           res.status(200).json(savedUser);
+        
+        
+    } 
+    catch (error) {
+        res.status(500).json({error: "Internal server error"});
+    }
+
+};
+
+
+export const fetchwallet = async (req, res) => {
+          try{
+            var amounts = 0;
+            const walletData = new Wallet(req.body);
+            const {userId} = walletData;
+            const walletcount = await Wallet.find({userId});
+            if(walletcount.length === 0)
+            {
+               return res.status(404).json({mesasge:"no transaction found"});
+            }
+             walletcount.forEach(element => {
+
+              amounts = amounts + element.amount;
+              
+            });
+            res.status(200).json({walletamount:amounts});
+           
+
+          }
+          catch(error){
+               res.status(500).json({error: "Internal server error"});
+          }
+    
+};
+
+
+

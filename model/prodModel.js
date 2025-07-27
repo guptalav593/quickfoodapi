@@ -2,25 +2,41 @@ import mongoose  from "mongoose";
 
 const prodSchema = new mongoose.Schema({
 
-    /*name:{
+     fname:{
         type: String,
         requrired: true
-    },
+     },
 
-     email:{
+      description:{
         type: String,
         requrired: true
-    },*/
+     },
 
-      proimage:{
+       ftypes: [
+    {
+      title: {
         type: String,
-        requrired: true
+        required: true
+      },
+      options: [
+        {
+          name: {
+            type: String,
+            required: true
+          },
+        }
+      ]
     }
+  ],
 
+   category:{
+        type: String,
+        requrired: true
+     },
 
 });
 
-export default mongoose.model("products", prodSchema);
+export default mongoose.model("foods", prodSchema);
 
 
 
