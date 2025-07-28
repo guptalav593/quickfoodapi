@@ -97,7 +97,7 @@ export const addproduct = async (req, res) => {
 
         }
         else {
-             const result = await cloudinary.uploader.upload(req.file.path, {
+            const result = await cloudinary.uploader.upload(req.file.path, {
             });
             prodData['fimage'] = result.secure_url;
             const savedProd = await prodData.save();

@@ -8,7 +8,6 @@ const prodSchema = new mongoose.Schema({
      },
 
      fimage:{
-
       type: String,
       required: true
 

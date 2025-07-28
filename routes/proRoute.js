@@ -15,7 +15,7 @@ proRoute.post("/createCategories", upload.single('file'),
 proRoute.get("/getCategories", fetch);
 proRoute.get("/getproducts", fetchproduct);
 proRoute.get("/fetchtypes", fetchprotype);
-proRoute.post("/addProducts", upload.single('file'), addproduct);
+proRoute.post("/addProducts",upload.single('file'),addproduct);
 proRoute.post("/addFtype", addftype);addoption
 proRoute.post("/addOption", addoption);
 
