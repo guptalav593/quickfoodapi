@@ -12,8 +12,6 @@ proRoute.post("/createCategories", upload.single('file'),
     create
 );
 
-
-
 proRoute.get("/getCategories", fetch);
 proRoute.get("/getproducts", fetchproduct);
 proRoute.get("/fetchtypes", fetchprotype);
