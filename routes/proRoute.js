@@ -11,10 +11,13 @@ const upload = multer({dest: 'uploads/'});
 proRoute.post("/createCategories", upload.single('file'),
     create
 );
+
+
+
 proRoute.get("/getCategories", fetch);
-proRoute.get("/products", fetchproduct);
+proRoute.get("/getproducts", fetchproduct);
 proRoute.get("/fetchtypes", fetchprotype);
-proRoute.post("/addProducts", addproduct);
+proRoute.post("/addProducts", upload.single('file'), addproduct);
 proRoute.post("/addFtype", addftype);addoption
 proRoute.post("/addOption", addoption);
 

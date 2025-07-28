@@ -54,20 +54,12 @@ export const fetch = async (req, res) => {
 
 export const fetchproduct = async (req, res) => {
     try {
-        const products = await Prod.find().populate(
-            {
-                path: 'typeId',
-                populate: {
-                    path: 'optionId',
-                    model: 'Options'
-                }
-            }
-        );
+        //const data = req.body.category;
+        const products = await Prod.find();
         if (products.length === 0) {
             return res.status(404).json({ mesasge: "no product found" });
         }
         res.status(200).json(products);
-
     }
     catch (error) {
         res.status(500).json({ error: "Internal server error" });
@@ -105,6 +97,9 @@ export const addproduct = async (req, res) => {
 
         }
         else {
+             const result = await cloudinary.uploader.upload(req.file.path, {
+            });
+            prodData['fimage'] = result.secure_url;
             const savedProd = await prodData.save();
             console.log("Food is saved", savedProd);
             res.status(200).json(savedProd);

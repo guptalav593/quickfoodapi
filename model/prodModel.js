@@ -7,6 +7,13 @@ const prodSchema = new mongoose.Schema({
         requrired: true
      },
 
+     fimage:{
+
+      type: String,
+      required: true
+
+     },
+
       description:{
         type: String,
         requrired: true
