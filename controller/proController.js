@@ -87,7 +87,9 @@ export const fetchprotype = async (req, res) => {
 export const addproduct = async (req, res) => {
 
     try {
-        const prodData = new Prod(req.body);
+        /*const prodData = new Prod(req.body.data);*/
+        const jsonData = JSON.parse(req.body.data);
+        const prodData = new Prod(jsonData);
         const { fname } = prodData;
         const ProdExist = await Prod.findOne({ fname });
 
@@ -104,7 +106,12 @@ export const addproduct = async (req, res) => {
             console.log("Food is saved", savedProd);
             res.status(200).json(savedProd);
         }
+           
+        /*  const jsonData = JSON.parse(req.body.data); // parse the JSON string
+  const file = req.file;
 
+  console.log('Received JSON data:', jsonData);
+  console.log('Received file:', file);*/
     }
     catch (error) {
         res.status(500).json({ error: "Internal server error" });
