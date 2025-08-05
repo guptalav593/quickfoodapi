@@ -23,7 +23,7 @@ mongoose.connect(MONGOURL).then(()=>{
     })
 }).catch((error) => console.log(error));
 
-app.use("/api/user", route);
+app.use("/api/user", route); 
 app.use("/api/product", proRoute);
 
 

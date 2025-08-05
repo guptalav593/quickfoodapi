@@ -1,6 +1,7 @@
 import mongoose  from "mongoose";
 
-const prodSchema = new mongoose.Schema({
+const prodSchema = new mongoose.Schema(
+  {
 
      fname:{
         type: String,
@@ -20,6 +21,12 @@ const prodSchema = new mongoose.Schema({
 
        ftypes: [
     {
+
+       canselect: {
+        type: String,
+        required: true
+      },
+
       title: {
         type: String,
         required: true
@@ -30,6 +37,10 @@ const prodSchema = new mongoose.Schema({
             type: String,
             required: true
           },
+          price:{
+              type: mongoose.Schema.Types.Double,
+              requrired: true
+          }
         }
       ]
     }
