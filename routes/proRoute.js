@@ -13,10 +13,10 @@ proRoute.post("/createCategories", upload.single('file'),
 );
 
 proRoute.get("/getCategories", fetch);
-proRoute.get("/getCart", fetchcart);
 proRoute.get("/getproducts", fetchproduct);
 proRoute.get("/fetchtypes", fetchprotype);
 proRoute.post("/addCart", addcart);
+proRoute.post("/getCart", fetchcart);
 proRoute.post("/addProducts",upload.single('file'),addproduct);
 proRoute.post("/addFtype", addftype);
 proRoute.post("/addOption", addoption);
