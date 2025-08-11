@@ -124,7 +124,30 @@ export const addcart = async (req, res) => {
 }
 
 
+export const updatecart = async (req, res) => {
+try {
+   const { userid, cartid, quantity } = req.body;
 
+    if (!userid || !cartid || quantity == null) {
+      return res.status(400).json({ error: "userid, cartid, and quantity are required" });
+    }
+
+    const result = await cart.updateOne(
+      { userid: userid, cartid: cartid },        // filter from request
+      { $set: { quantity: quantity } }           // update quantity
+    );
+   
+    if (result.modifiedCount > 0) {
+      res.json({ success: true, message: 'Quantity updated successfully' });
+    } else {
+      res.json({ success: false, message: 'No matching item found' });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+
+}
 
 
 export const addproduct = async (req, res) => {
