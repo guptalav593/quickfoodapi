@@ -92,7 +92,7 @@ export const fetchcart = async (req, res) => {
 
         if (cartCount.length === 0) {
             console.log("Cart is Empty", savedCart);
-            res.status(200).json({error:"empty"});
+            res.status(200).json(cartCount);
 
         }
        else {
@@ -106,8 +106,6 @@ export const fetchcart = async (req, res) => {
     }
 
 }
-
-
 
 export const addcart = async (req, res) => {
     try
