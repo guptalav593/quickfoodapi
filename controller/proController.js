@@ -91,7 +91,7 @@ export const fetchcart = async (req, res) => {
         const cartCount = await cart.find({ userid });
 
         if (cartCount.length === 0) {
-            console.log("Cart is Empty", savedCart);
+            console.log("Cart is Empty");
             res.status(200).json(cartCount);
 
         }
