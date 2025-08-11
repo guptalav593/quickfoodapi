@@ -41,7 +41,7 @@ const cartSchema = new mongoose.Schema(
             required: true
           },
           price:{
-              type: mongoose.Schema.Types.Double,
+              type: String,
               requrired: true
           }
         }
