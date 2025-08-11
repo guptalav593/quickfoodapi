@@ -21,6 +21,10 @@ const prodSchema = new mongoose.Schema(
 
        ftypes: [
     {
+       maindatory: {
+        type: String,
+        required: true
+      },
 
        canselect: {
         type: String,
