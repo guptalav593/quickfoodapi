@@ -3,6 +3,7 @@ import Prod from "../model/prodModel.js";
 import ftype from "../model/typeModel.js";
 import option from "../model/optionsModel.js";
 import cloudinary from "../utils/cloudinary.js"; // Ensure this import is correct
+import cart from "../model/cartModel.js";
 
 export const create = async (req, res) => {
  
@@ -81,6 +82,50 @@ export const fetchprotype = async (req, res) => {
     }
 
 };
+
+
+export const fetchcart = async (req, res) => {
+    try {
+        const cartData = new cart(req.body);
+        const { userid } = cartData;
+        const cartCount = await cart.find({ userid });
+
+        if (cartCount.length === 0) {
+            console.log("Cart is Empty", savedCart);
+            res.status(200).json({error:"empty"});
+
+        }
+       else {
+           
+            res.status(200).json(cartCount);
+        }
+           
+    }
+    catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+    }
+
+}
+
+
+
+export const addcart = async (req, res) => {
+    try
+     {
+            const cartData = new cart(req.body);
+            const savedCart = await cartData.save();
+            console.log("Cart is saved", savedCart);
+            res.status(200).json(savedCart);
+        
+           
+         }
+    catch (error) {
+        res.status(500).json({ error: "Internal server error" });
+    }
+
+}
+
+
 
 
 

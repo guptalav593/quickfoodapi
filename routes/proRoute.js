@@ -1,7 +1,7 @@
 import express from "express"
 import multer from "multer";
 //import cloudinary from "../utils/cloudinary.js";
-import { fetch, create, addproduct,addftype, fetchproduct, fetchprotype,addoption } from "../controller/proController.js"
+import { fetch, create, addproduct,addftype, fetchproduct, fetchprotype,addoption, fetchcart } from "../controller/proController.js"
 
 const proRoute = express.Router();
 
@@ -13,6 +13,7 @@ proRoute.post("/createCategories", upload.single('file'),
 );
 
 proRoute.get("/getCategories", fetch);
+proRoute.get("/getCart", fetchcart);
 proRoute.get("/getproducts", fetchproduct);
 proRoute.get("/fetchtypes", fetchprotype);
 proRoute.post("/addProducts",upload.single('file'),addproduct);
