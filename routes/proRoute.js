@@ -19,8 +19,8 @@ proRoute.post("/updateCart", updatecart);
 proRoute.post("/addCart", addcart);
 proRoute.post("/getCart", fetchcart);
 proRoute.post("/addProducts",upload.single('file'),addproduct);
-proRoute.post("/addFtype", addftype);
-proRoute.post("/addOption", addoption);
+//proRoute.post("/addFtype", addftype);
+//proRoute.post("/addOption", addoption);
 
 
 
