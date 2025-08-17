@@ -150,6 +150,32 @@ try {
 }
 
 
+export const modifycart = async (req, res) => {
+    try {
+       const { userid, cartid,totalamount, ftype } = req.body;
+    
+        if (!userid || !cartid || ftype == null) {
+          return res.status(400).json({ error: "userid, cartid, and ftype are required" });
+        }
+    
+        const result = await cart.updateOne(
+          { userid: userid, cartid: cartid },        // filter from request
+          { $set: { ftypes: ftype, totalamount: totalamount } }           // update quantity
+        );
+       
+        if (result.modifiedCount > 0) {
+          res.json({ success: true, message: 'cart updated successfully' });
+        } else {
+          res.json({ success: false, message: 'No matching item found' });
+        }
+      } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+      }
+    
+    }
+
+
 export const addproduct = async (req, res) => {
 
     try {
