@@ -153,14 +153,14 @@ try {
 export const modifycart = async (req, res) => {
     try {
        const { userid, cartid,totalamount, ftype } = req.body;
-       const cart = await cart.findOne({ userid: userid });
+       const cart = await cart.find({userid });
         if (!cart) {
           console.log("Cart not found");
           return;
         }
     
       
-        cart[1].ftypes = ftype;
+           cart[1].ftypes = ftype;
           cart[1].totalamount = totalamount;
     
     
