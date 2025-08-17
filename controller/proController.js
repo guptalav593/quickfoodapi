@@ -153,8 +153,23 @@ try {
 export const modifycart = async (req, res) => {
     try {
        const { userid, cartid,totalamount, ftype } = req.body;
+       const cart = await cart.findOne({ userid: userid });
+        if (!cart) {
+          console.log("Cart not found");
+          return;
+        }
     
-        if (!userid || !cartid || ftype == null) {
+      
+        cart[1].ftypes = ftype;
+          cart[1].totalamount = totalamount;
+    
+    
+        await cart.save();
+        console.log("Cart updated:", cart);
+        res.status(500).json({ success: 'Cart updated' });
+    
+    
+       /* if (!userid || !cartid || ftype == null) {
           return res.status(400).json({ error: "userid, cartid, and ftype are required" });
         }
     
@@ -167,8 +182,9 @@ export const modifycart = async (req, res) => {
           res.json({ success: true, message: 'cart updated successfully' });
         } else {
           res.json({ success: false, message: 'No matching item found' });
-        }
-      } catch (err) {
+        }*/
+      } 
+      catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Server error' });
       }
