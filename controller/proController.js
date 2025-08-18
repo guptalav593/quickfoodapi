@@ -160,7 +160,7 @@ export const modifycart = async (req, res) => {
         }
     
         const result = await cart.updateOne(
-          { userid: userid, cartid: cartid },        // filter from request
+          { userid: userid, _id: cartid },        // filter from request
           { $set: { ftypes: ftype, totalamount: totalamount } }           // update quantity
         );
        
