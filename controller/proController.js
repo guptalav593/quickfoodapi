@@ -152,7 +152,7 @@ try {
 
 export const modifycart = async (req, res) => {
     try {
-       const { userid, cartid,totalamount, ftype } = req.body;
+       const { userid, cartid,totalamount, ftype,quantity } = req.body;
     
     
        if (!userid || !cartid || ftype == null) {
@@ -161,7 +161,7 @@ export const modifycart = async (req, res) => {
     
         const result = await cart.updateOne(
           { userid: userid, _id: cartid },        // filter from request
-          { $set: { ftypes: ftype, totalamount: totalamount } }           // update quantity
+          { $set: { ftypes: ftype, totalamount: totalamount,quantity:quantity } }           // update quantity
         );
        
         if (result.modifiedCount > 0) {
