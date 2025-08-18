@@ -126,14 +126,14 @@ export const addcart = async (req, res) => {
 
 export const updatecart = async (req, res) => {
 try {
-   const { userid, cartid, quantity } = req.body;
+   const { userid, cartid, quantity,_id } = req.body;
 
     if (!userid || !cartid || quantity == null) {
       return res.status(400).json({ error: "userid, cartid, and quantity are required" });
     }
 
     const result = await cart.updateOne(
-      { userid: userid, cartid: cartid },        // filter from request
+      { userid: userid, _id:_id },        // filter from request
       { $set: { quantity: quantity } }           // update quantity
     );
    
